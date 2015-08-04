@@ -14,5 +14,6 @@
     <string name="information_phone">电话</string>
     <string name="information_email">邮件</string>
     <string name="information_contentDescription">QR</string>
+    <string name="create_QR">Create QRcode</string>
 
 </resources>
