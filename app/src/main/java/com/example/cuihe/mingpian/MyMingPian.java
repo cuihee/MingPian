@@ -20,20 +20,16 @@ import com.google.zxing.qrcode.QRCodeWriter;
 
 public class MyMingPian extends ActionBarActivity {
 
-    public String display_name="姓名:崔鹤";
-    public String display_studentnumber="学号:3120000406";
-    public String display_phone="Phone:18937318681";
-    public String display_email="Email:18937318681@163.com";
-    public String url = display_name + " " + display_studentnumber + " " + display_phone + " " + display_email;
+    public String display_name="崔鹤";
+    public String display_studentnumber="3120000406";
+    public String display_phone="18937318681";
+    public String display_email="18937318681@163.com";
+    public String url = "BEGIN:VCARD\nN:"+display_name + "\nNOTE:SN:" + display_studentnumber + "\nTEL:" + display_phone + "\nEMAIL:" + display_email+"\nEND:VCARD ";
 
-//    public EditText studentnumber= (EditText)super.findViewById(R.id.studentnumber);
-//    public EditText phone= (EditText)super.findViewById(R.id.phone);
-//    public EditText email= (EditText)super.findViewById(R.id.email);
     public EditText phone;
     public EditText name;
     public EditText studentnumber;
     public EditText email;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +37,8 @@ public class MyMingPian extends ActionBarActivity {
         setContentView(R.layout.activity_my_ming_pian);
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.my_ming_pian_1);
-        rLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.dota_fire));
+//        rLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.dota_fire));
+        rLayout.setBackgroundResource(R.drawable.dota_fire);
 
         name= (EditText)super.findViewById(R.id.name);
         name.setText(display_name);
@@ -67,13 +64,15 @@ public class MyMingPian extends ActionBarActivity {
             display_studentnumber=studentnumber.getText().toString();
             display_phone=phone.getText().toString();
             display_email=email.getText().toString();
-            url = display_name + " " + display_studentnumber + " " + display_phone + " " + display_email;
+            url = "BEGIN:VCARD\nN:"+display_name + "\nNOTE:SN:" + display_studentnumber + "\nTEL:" + display_phone + "\nEMAIL:" + display_email+"\nEND:VCARD ";
+
             createQR(url);
         }
     }
     public void createQR(String url){
         try {
             int QR_WIDTH = 300, QR_HEIGHT = 300;
+
             Hashtable<EncodeHintType, String> hints = new Hashtable<EncodeHintType, String>();
             hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
             ImageView QRimg = (ImageView) findViewById(R.id.QR);
